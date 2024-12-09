@@ -1,0 +1,24 @@
+# Running keycloak with docker-compose
+
+version: '3.7'
+
+
+services:
+  keycloak:
+    image: keycloak:dev
+    container_name: keycloak_2
+    environment:
+      KEYCLOAK_ADMIN: admin_2
+      KEYCLAOK_ADMIN_PASSWORD: admin
+    ports:
+      - "8080:8080"
+    networks:
+      - keycloak-network
+    volumes:
+      - ./keycloak-data:/opt/keycloak/data
+      - ./keycloak-themes:/opt/keycloak/themes
+
+
+networks:
+  keycloak-network:
+    driver: bridge
