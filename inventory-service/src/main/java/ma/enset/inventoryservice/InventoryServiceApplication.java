@@ -28,8 +28,8 @@ public class InventoryServiceApplication {
                 productRepository.save(
                         Product.builder()
                                 .name(productName)
-                                .price(Math.random() * 10000)
-                                .quantity(Math.random() * 100)
+                                .price(Math.round(Math.random() * 1000 * 100.0) / 100.0)
+                                .quantity((long) (Math.random() * 100))
                                 .build()
                 );
             });

@@ -20,7 +20,7 @@ public class ProductRestController {
     private final ProductRepository productRepository;
 
     @GetMapping
-    @PreAuthorize("hasAuthority('ADMIN')")
+//    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<List<Product>> getAll() {
         return ResponseEntity.ok(productRepository.findAll());
     }

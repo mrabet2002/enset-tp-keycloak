@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {ProductService} from "../../services/product.service";
+import {OrderService} from "../../services/order.service";
 
 @Component({
   selector: 'app-orders',
@@ -6,5 +8,13 @@ import { Component } from '@angular/core';
   styleUrl: './orders.component.css'
 })
 export class OrdersComponent {
+  orders$ = this.orderService.observeStream();
 
+  constructor(
+    private orderService: OrderService
+  ) {}
+
+  ngOnInit() {
+    this.orderService.getAll()
+  }
 }

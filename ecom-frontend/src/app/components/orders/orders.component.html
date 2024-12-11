@@ -1,1 +1,35 @@
-<p>orders works!</p>
+<div class="p-3">
+  <div class="card">
+    <div class="card-header">Orders</div>
+    <div class="card-body">
+      <h2>Products</h2>
+      <table class="table">
+        <thead>
+        <tr>
+          <th>N°</th>
+          <th>Date</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <ng-container *ngIf="orders$ | async as orders; else loading">
+          <tr *ngFor="let order of orders">
+            <td>{{ order.id }}</td>
+            <td>{{ order.createdAt | date : 'dd-MM-yyyy' }}</td>
+            <td>{{ order.status }}</td>
+            <td>
+              <a class="btn btn-info" [routerLink]="['/orders', order.id]">Details</a>
+            </td>
+          </tr>
+        </ng-container>
+        <ng-template #loading>
+          <tr>
+            <td colspan="4">Loading...</td>
+          </tr>
+        </ng-template>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
